@@ -1,0 +1,20 @@
+{
+  "name": "Caption Studio — Video Tipe 1 & Tipe 3",
+  "short_name": "Caption Studio",
+  "description": "Buat video quotes Tipe 1 dan Tipe 3 dengan durasi mengikuti musik.",
+  "lang": "id-ID",
+  "id": "./",
+  "start_url": "./tipe3.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f5f6",
+  "theme_color": "#f4f5f6",
+  "icons": [
+    { "src": "icons/app-icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/app-icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Video Tipe 3", "short_name": "Tipe 3", "url": "./tipe3.html" },
+    { "name": "Video Tipe 1", "short_name": "Tipe 1", "url": "./tipe1.html" }
+  ]
+}

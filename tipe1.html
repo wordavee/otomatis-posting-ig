@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f4f5f6" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="description" content="Generator video quotes Tipe 1 dengan musik dan ukuran template tetap." />
+  <title>Video Quotes Tipe 1 — Caption Studio</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/app-icon-180.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="tipe1.css" />
+  <script src="pwa.js" defer></script>
+  <script src="vendor/jszip.min.js" defer></script>
+  <script src="vendor/mediabunny.min.js" defer></script>
+  <script src="assets/default-music.js" defer></script>
+  <script src="template-video.js" defer></script>
+  <script src="tipe1.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#tipe3Workspace">Lewati ke workspace</a>
+
+  <header class="topbar">
+    <div class="brand-wrap">
+      <div class="brand-mark" aria-hidden="true">Aa</div>
+      <div>
+        <p class="eyebrow">CONTENT STUDIO</p>
+        <h1>Caption Video</h1>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <nav class="mode-nav" aria-label="Pilih generator">
+        <a href="tipe3.html">Tipe 3</a>
+        <a href="tipe1.html" class="active" aria-current="page">Tipe 1</a>
+      </nav>
+      <div class="privacy-badge" title="Semua file diproses di browser">
+        <span class="privacy-dot" aria-hidden="true"></span>
+        Lokal & privat
+      </div>
+    </div>
+  </header>
+
+  <main id="tipe3Workspace" class="workspace tipe3-workspace">
+    <section class="intro tipe3-intro" aria-labelledby="tipe3-title">
+      <div>
+        <p class="kicker">VIDEO QUOTES · TIPE 1</p>
+        <h2 id="tipe3-title">Video Tipe 1 minimalis dengan musik pilihanmu.</h2>
+        <p>Masukkan satu atau banyak quotes lalu hasilkan video persegi. Durasi setiap video otomatis mengikuti musik.</p>
+      </div>
+      <ol class="stepper" aria-label="Alur kerja">
+        <li class="active"><span>1</span>Quotes</li>
+        <li><span>2</span>Musik</li>
+        <li><span>3</span>Video</li>
+      </ol>
+    </section>
+
+    <div class="app-grid tipe3-grid">
+      <div class="controls">
+        <section class="panel" aria-labelledby="tipe3-input-title">
+          <div class="panel-heading">
+            <div class="step-number">01</div>
+            <div>
+              <h3 id="tipe3-input-title">Masukkan quotes</h3>
+              <p>Bisa dari Excel/CSV atau satu quotes manual.</p>
+            </div>
+            <span id="tipe3QuoteCount" class="count-badge">1 quotes</span>
+          </div>
+
+          <label id="tipe3Dropzone" class="dropzone" for="tipe3ExcelInput">
+            <input id="tipe3ExcelInput" type="file" accept=".xlsx,.csv,text/csv" />
+            <span class="drop-icon" aria-hidden="true">↑</span>
+            <span class="drop-copy">
+              <strong>Pilih Excel atau CSV</strong>
+              <small>Satu baris menjadi satu video · .xlsx / .csv</small>
+            </span>
+          </label>
+
+          <div id="tipe3ExcelStatus" class="file-status" hidden>
+            <span class="file-symbol" aria-hidden="true">X</span>
+            <span class="file-meta"><strong id="tipe3ExcelName">—</strong><small id="tipe3ExcelInfo">—</small></span>
+            <button id="clearTipe3Excel" class="icon-button" type="button" aria-label="Hapus Excel">×</button>
+          </div>
+
+          <div id="tipe3ColumnRow" class="field-row" hidden>
+            <label for="tipe3ColumnSelect">Kolom quotes</label>
+            <select id="tipe3ColumnSelect"></select>
+          </div>
+
+          <div class="or-divider"><span>atau</span></div>
+
+          <label class="manual-quote-field" for="manualTipe3Quote">
+            <span>QUOTES MANUAL</span>
+            <textarea id="manualTipe3Quote" rows="4" maxlength="500">aku friendly?</textarea>
+          </label>
+          <button id="useManualTipe3" class="secondary-button manual-button" type="button">Gunakan quotes manual</button>
+
+          <div class="helper-row">
+            <span>Header Excel yang disarankan: <code>kalimat</code> atau <code>quotes</code>.</span>
+            <a href="template-kalimat.xlsx" download>Unduh template</a>
+          </div>
+        </section>
+
+
+        <section class="panel music-panel" aria-labelledby="music-title">
+          <div class="panel-heading">
+            <div class="step-number">02</div>
+            <div>
+              <h3 id="music-title">Pilih musik video</h3>
+              <p>Musik kiriman sudah menjadi bawaan. Kamu juga bisa menggantinya.</p>
+            </div>
+            <span id="musicDurationBadge" class="count-badge">Memuat…</span>
+          </div>
+
+          <label id="musicDropzone" class="dropzone compact" for="musicInput">
+            <input id="musicInput" type="file" accept="audio/*,.mp3,.m4a,.wav,.ogg,.aac" />
+            <span class="drop-icon music-icon" aria-hidden="true">♫</span>
+            <span class="drop-copy">
+              <strong>Pilih musik lain</strong>
+              <small>MP3, M4A, WAV, OGG, atau AAC · durasi video mengikuti musik</small>
+            </span>
+          </label>
+
+          <div class="music-status-card">
+            <div class="music-meta">
+              <span class="file-symbol music-symbol" aria-hidden="true">♪</span>
+              <span class="file-meta"><strong id="musicName">musik-bawaan.mp3</strong><small id="musicInfo">Menyiapkan musik…</small></span>
+            </div>
+            <button id="resetMusic" class="text-button" type="button">Pakai musik bawaan</button>
+          </div>
+          <audio id="musicPreview" class="music-preview" controls preload="metadata"></audio>
+          <p class="fixed-note">Setiap quotes diekspor menjadi satu video. Jika quotes lebih dari satu, semua video dikemas dalam ZIP.</p>
+        </section>
+
+        <section class="panel" aria-labelledby="fixed-template-title">
+          <div class="panel-heading fixed-heading">
+            <div class="step-number">03</div>
+            <div>
+              <h3 id="fixed-template-title">Template Tipe 1 dikunci</h3>
+              <p>Semua elemen tetap mengikuti gambar referensi.</p>
+            </div>
+            <span class="locked-badge">TETAP</span>
+          </div>
+
+          <div class="fixed-template-grid">
+            <div><span class="fixed-swatch"></span><small>Latar</small><strong>#FFFFFF</strong></div>
+            <div><span class="fixed-icon">Aa</span><small>Font quotes</small><strong>Arial Regular</strong></div>
+            <div><span class="fixed-icon">1:1</span><small>Ukuran</small><strong>2160 × 2160</strong></div>
+            <div><span class="fixed-icon signature-mini">w</span><small>Tanda</small><strong>wordivee</strong></div>
+          </div>
+          <p class="fixed-note">Quotes selalu rata kiri, sedangkan blok teks tetap berada di tengah vertikal untuk kalimat pendek maupun panjang.</p>
+        </section>
+
+        <section class="export-panel tipe3-export" aria-labelledby="tipe3-export-title">
+          <div>
+            <p class="export-label">SIAP DIEKSPOR</p>
+            <h3 id="tipe3-export-title"><span id="tipe3ExportCount">1</span> video</h3>
+            <p>1:1 · 2160 × 2160 px · <span id="exportMusicDuration">durasi mengikuti musik</span></p>
+          </div>
+          <button id="generateTipe3" class="primary-button" type="button">
+            <span>Generate video</span><span aria-hidden="true">→</span>
+          </button>
+        </section>
+      </div>
+
+      <aside class="preview-column tipe3-preview-column" aria-labelledby="tipe3-preview-title">
+        <div class="preview-card tipe3-preview-card">
+          <div class="preview-header">
+            <div><p class="preview-label">PREVIEW TIPE 1</p><h3 id="tipe3-preview-title">Frame video</h3></div>
+            <div class="preview-tools">
+              <button id="tipe3Prev" class="icon-button bordered" type="button" aria-label="Quotes sebelumnya">←</button>
+              <span id="tipe3PreviewIndex">1 / 1</span>
+              <button id="tipe3Next" class="icon-button bordered" type="button" aria-label="Quotes berikutnya">→</button>
+            </div>
+          </div>
+          <div class="canvas-shell tipe3-canvas-shell">
+            <canvas id="tipe3Canvas" width="540" height="540">Pratinjau template Instagram Tipe 1.</canvas>
+          </div>
+          <div class="preview-footer">
+            <span>Rasio 1:1</span><span class="quality-chip">VIDEO</span><span id="tipe3FileName">001-tipe-1.mp4</span>
+          </div>
+        </div>
+        <div class="tip-card tipe3-tip">
+          <span class="tip-mark" aria-hidden="true">i</span>
+          <p><strong>Hanya quotes yang berubah.</strong> Latar putih, gaya font, posisi teks, dan tanda <strong>wordivee</strong> selalu sama.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <dialog id="tipe3ProgressDialog" class="progress-dialog">
+    <div class="progress-content">
+      <div class="progress-spinner" aria-hidden="true"></div>
+      <p class="preview-label">MEMBUAT VIDEO TIPE 1</p>
+      <h2 id="tipe3ProgressTitle">Menyiapkan video…</h2>
+      <p id="tipe3ProgressDetail">Jangan tutup tab ini.</p>
+      <div class="progress-track"><span id="tipe3ProgressBar"></span></div>
+      <div class="progress-meta"><span id="tipe3ProgressPercent">0%</span><span id="tipe3ProgressCounter">0 / 0</span></div>
+    </div>
+  </dialog>
+
+  <div id="tipe3Toast" class="toast" role="status" aria-live="polite"></div>
+  <footer><p>Semua proses berlangsung lokal di browser. File Excel, quotes, dan musik tidak dikirim ke server.</p></footer>
+</body>
+</html>
